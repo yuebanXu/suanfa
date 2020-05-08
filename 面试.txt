@@ -1,0 +1,8 @@
+面经：
+1. vue的key有什么用，设key为index会有什么问题，vue的diff节点是如何复用(例子：列表子项顺序改变)
+2. 说下vue设置 this.xxx = xxx 之后的整个流程
+3. 谈谈刚刚说到的vue依赖收集 ... 为什么每次触发都要清除之前依赖
+4. 谈谈nextTick
+5. 谈谈vue你封装的分页请求mixin、搜索mixin
+6.  react的hooks解决什么问题，你封装过什么hook
+7.  js的原型链和面向对象
