@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>希尔排序</title>
+</head>
+<body>
+  <script>
+    function xierSortArr() {
+      this.dataArr = [5,8,1,6,3,7,9,2.99,10,40,4]
+      this.change = change
+      this.xierSort = xierSort
+      this.gaps = [5,3,1]
+    }
+    function change(arr,index1,index2) {
+      let temp = arr[index1] 
+      arr[index1] = arr[index2]
+      arr[index2] = temp
+    }
+    function xierSort() {
+      let outer,inner
+      let times = 0
+      for (let index = 0; index < this.gaps.length; index++) {
+        for (let out = this.gaps[index]; out < this.dataArr.length; out++) {
+          let temp = this.dataArr[out]
+          let inner = out
+          while(inner>=this.gaps[index]&&(this.dataArr[inner-this.gaps[index]]>temp)) {
+            this.dataArr[inner] = this.dataArr[inner-this.gaps[index]]
+            inner-=this.gaps[index]
+            times++
+          }
+          this.dataArr[inner] = temp
+        }
+      }
+      console.log(times)
+    }
+
+    var arr = new xierSortArr()
+    arr.xierSort()
+    console.log(arr.dataArr)
+  </script>
+</body>
+</html>

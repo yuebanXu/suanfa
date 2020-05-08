@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>二叉树</title>
+</head>
+<body>
+    <script>
+
+      function Node(data,left,right) {
+        this.data = data
+        this.right = right
+        this.left = left
+        this.show = show
+      }
+
+      function show() {
+        return this.data
+      }
+
+      function TFT() {
+        this.root = null 
+        this.insert = insert
+        this.inOrder = inOrder
+        this.preOrder = preOrder
+        this.postOrder = postOrder
+        this.findMax = findMax
+        this.findMin = findMin
+        this.find = find
+        this.remove = remove
+        this.removeNode = removeNode
+      }
+      function insert(data) {
+        var n = new Node(data,null,null)
+        if(!this.root) {
+          this.root = n
+        }else {
+          var current = this.root
+          var parent
+          while(true) {
+            parent = current
+            if(data < current.data) {
+              current = current.left
+              if(!current) {
+                parent.left = n
+                break
+              }
+            }else {
+              current = current.right
+              if(!current) {
+                parent.right = n
+                break
+              }
+            }
+          }
+        }
+      }
+
+      
+
+      //中序遍历  右->总->左
+      function inOrder(node) {
+        if(node) {
+          inOrder(node.left)
+          console.log(node.data)
+          inOrder(node.right)
+        }
+      }
+      //先序遍历
+      function preOrder(node) {
+        if(node) {
+          preOrder(node.left)
+          console.log(node.data)
+          preOrder(node.right)
+        }
+      }
+      //后序遍历
+      function postOrder(node) {
+        if(node) {
+          postOrder(node.right)
+          console.log(node.data)
+          postOrder(node.left)
+        }
+      }
+      function findMin(root) {
+        var current = root || this.root
+        while(current.left) {
+          current = current.left
+        }
+        return current
+      }
+      function findMax(root) {
+        var current = root || this.root
+        while(current.right) {
+          current = current.right
+        }
+        // console.log(current.data)
+        return current
+      }
+      function find(data) {
+        var current = this.root
+        while(current) {
+          if(data == current.data) {
+            console.log(current.data)
+            return current
+          }else if(data > current.data) {
+            current = current.right
+          }else if(data < current.data) {
+            current = current.left
+          }
+        }
+        return null
+      }
+      function remove(data) {   //删除某个节点
+        removeNode(this.root,data)
+      }
+
+      function removeNode(node,data) {
+        var current = this.root || node
+        if(!current) {
+          return
+        }else {
+          if(data == current.data) {
+            if(!current.left&&!current.right) {
+              return null
+            }else if(!current.right) {
+              return current.left
+            }else if(!current.left) {
+              return current.right
+            }
+            //左右都存在
+            var tempNode = findMin(node.right) //临时节点  
+            node.data = tempNode.data  //最小的替代这个值
+            node.right = removeNode(node.right,tempNode.data)   //删去原来的这个最小的值   下面则相反
+            // var tempNode = findMax(node.left) //临时节点  
+            // node.data = tempNode.data
+            // node.left = removeNode(node.left,tempNode.data)
+            console.log(tempNode.data)
+            console.log(node)
+            return node
+          }else if(data > current.data) {
+            node.right = removeNode(current.right,data)
+            return node
+          }else {
+            node.left = removeNode(current.left,data)
+            return node
+          }
+        }
+      }
+
+      var firstTFT = new TFT()
+      firstTFT.insert(20)
+      firstTFT.insert(15)
+      firstTFT.insert(32)
+      firstTFT.insert(47)
+      firstTFT.insert(9)
+      firstTFT.insert(89)
+      firstTFT.insert(13)
+      firstTFT.insert(55)
+      firstTFT.insert(29)
+      firstTFT.insert(45)
+      console.log(firstTFT)
+      // firstTFT.inOrder(firstTFT.root)
+      // console.log('=============先序')
+      // firstTFT.preOrder(firstTFT.root)
+      // console.log('=============后序')
+      // firstTFT.postOrder(firstTFT.root)
+      // firstTFT.findMin(firstTFT.root.right)
+      firstTFT.findMax()
+      // firstTFT.remove(32)
+      // firstTFT.inOrder(firstTFT.root)
+
+    </script>
+</body>
+</html>

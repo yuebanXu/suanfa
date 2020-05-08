@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>冒泡排序</title>
+</head>
+<body>
+    <script>
+      function bubblingSortArr() {
+        this.dataArr = [5,8,1,6,3,7,9,2.99,10,4]
+        this.change = change
+        this.bubblingSort = bubblingSort
+      }
+      function change(arr,index1,index2) {
+        let temp = arr[index1] 
+        arr[index1] = arr[index2]
+        arr[index2] = temp
+      }
+      function bubblingSort() {
+        let data = this.dataArr
+        let numLength = this.dataArr.length
+        for (let index = 0; index < numLength; index++) {
+          for (let inner = 0; inner < numLength-1; inner++) {
+            if(data[inner] < data[inner+1]) {
+              this.change(this.dataArr,inner,inner+1)
+            }
+          }
+        }
+      }
+      var arr = new bubblingSortArr()
+      arr.bubblingSort()
+      console.log(arr.dataArr)
+    </script>
+</body>
+</html>

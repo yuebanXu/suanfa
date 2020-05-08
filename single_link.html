@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单向链表</title>
+</head>
+
+<body>
+    <script>
+      function Element(element) {
+        this.element = element
+        this.next = null
+      }
+      function LList() {
+        this.head = new Element('head')
+        this.find = find
+        this.findPrevious = findPrevious
+        this.inserts = inserts
+        this.remove = remove
+        this.logs = logs
+      }
+      function find(item) {
+        var currElement = this.head
+        while(currElement.element != item) {
+          currElement = currElement.next
+        }
+        return currElement
+      }
+      function inserts(newElement,item) {
+        var newElement = new Element(newElement)
+        var currElement = this.find(item)
+        newElement.next = currElement.next
+        currElement.next = newElement
+      }
+      function findPrevious(item) {
+        var currElement = this.head
+        while((currElement.next.element != item)&&(currElement.next != null)) {
+          currElement = currElement.next
+        }
+        return currElement
+      }
+      function remove(item) {
+        var preElement = this.findPrevious(item)
+        var currElement = this.find(item)
+        preElement.next = currElement.next
+        currElement.next = null
+      }
+      function logs() {
+        var currElement = this.head
+        while(currElement.next !=null) {
+          console.log(currElement.next.element)
+          currElement = currElement.next
+        }
+        return
+      }
+      var city = new LList()
+      city.inserts('first','head');
+      city.inserts('second','first');
+      city.inserts('third','second');
+      console.log(city)
+      city.remove('second')
+      city.logs()
+    </script>
+</body>
+</html>
