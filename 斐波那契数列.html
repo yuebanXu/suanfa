@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>斐波那契数列</title>
+</head>
+<body>
+    <script>
+      //参数n变大时，出现浏览器假死现象
+      // function Fibonacci(n) {
+      //   let num
+      //   if(n == 0) {
+      //     return 0
+      //   }else if(n == 1) {
+      //     return 1
+      //   }else if(n == 2) {
+      //     return 1
+      //   }else {
+      //     return parseInt(Fibonacci(n-1)) + parseInt(Fibonacci(n-2))
+      //   } 
+      // }
+      //尾递归优化
+      // function Fibonacci(n,res1=1,res2=1) {
+      //   if(n <= 2){
+      //     return res2;    
+      //   }else{
+      //     return Fibonacci(n-1,res2,res1+res2)
+      //   }  
+      // }
+      //循环
+      function Fibonacci(n) {
+        if(n<=2) return 1
+        let res1 = 0
+        let res2 = 1
+        for (let i = 1; i < n; i++) {
+          let t = res1
+          res1 = res2
+          res2 = (res2+t)
+        }
+        return res2
+      }
+      console.log(Fibonacci(6))
+    </script>
+</body>
+</html>
