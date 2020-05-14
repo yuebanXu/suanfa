@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ListNode(val) {
+            this.val = val;
+            this.next = null;
+        }
+        function add(l1, l2) {
+            if(!l1 && !l2) return null
+            let head = new ListNode()
+            let pre = head
+            let i = 0
+            while(l1||l2) {
+                let sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + i
+                i = sum >= 10 ? 1 : 0
+                let newNode = new ListNode(sum%10)
+                pre.next = newNode
+                pre = pre.next
+                l1 && (l1 = l1.next)
+                l2 && (l2 = l2.next)
+            }
+            i && (pre.next = new ListNode(i))
+            return head.next
+        }
+        var a = {n:1}; 
+        var b = a;  
+        a.x = a = {n:2}; 
+        console.log(a.x);// --> undefined 
+        console.log(b.x);
+    </script>
+</body>
+</html>
