@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function changeObj(obj) {
+      if(!obj || typeof obj !== 'object') return
+      let temp = {}
+      for (let key in obj) {
+        if(key.includes('.')) {
+          decompose(obj[key],key,temp)
+        }else {
+          temp[key] = obj[key]
+        } 
+      }
+      console.log(temp)
+    }
+    function decompose(kv,key,temp) {
+      let newArr = key.split('.')
+      let newObj = temp
+      for (let i = 0; i < newArr.length; i++) {
+        if(!newObj.hasOwnProperty(newArr[i])) {
+          newObj[newArr[i]] = {}
+        }
+        if(i == newArr.length - 1) {
+          newObj[newArr[i]] = kv
+        }
+        newObj = newObj[newArr[i]]
+      }
+    }
+    let obj = {
+      'A': 1,
+      'B.B': 3,
+      // 'CC.D.E.F.G': 4,
+      // 'CC.D.F': 5
+    }
+    changeObj(obj)
+  </script>
+</body>
+</html>

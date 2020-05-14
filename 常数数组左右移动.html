@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function leftRight(arr) {
+      let num = arr.length
+      //时间复杂度O(n的2次方)
+      // for (let outer = 0; outer < num; inner++) {
+      //   for (let inner = outer + 1; inner < num - 1; inner++) {
+      //     if(arr[outer]<0) {
+      //       change(arr,outer,inner)
+      //     }
+      //   }
+      // }
+
+      for (let left = 0; left < num; left++) {
+        let right = num -left
+        if(arr[left]<0 && left!=right) {
+          change(arr,left,left+1)
+        }
+        if(arr[right]>=0 && left!=right) {
+          change(arr,right,right-1)
+        }
+      }
+
+      console.log(arr)
+    }
+    function change(arr,idx1,idx2) {
+      let temp = arr[idx1]
+      arr[idx1] = arr[idx2]
+      arr[idx2] = temp
+    }
+
+    let arr = [6, 4, -3, 5, -2, -1, 0, 1, -9]
+    leftRight(arr)
+  </script>
+</body>
+</html>
