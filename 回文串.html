@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function validPalindrome(str) {
+      let i = 0,r = str.length-1
+      while(i<r) {
+        if(str[i] !== str[r]) {
+           return isValid(str,i,r-1) || isValid(str,i+1,r)
+        }
+        i++
+        r--
+      }
+      return true
+    }
+    function isValid(str,i,r) {
+      while (i < r) { // 指针相遇 结束循环
+        if (str[i] !== str[r]) { // 一票否决
+          return false 
+        }
+        i++ // 指针挪动，相互逼近
+        r--
+      }
+      return true
+    }
+    let a = 'absa'
+    console.log(validPalindrome(a))
+  </script>
+</body>
+</html>
