@@ -8,12 +8,17 @@
 </head>
 <body>
     <script>
-      for (var i = 0; i < 6; i++) {
-        setTimeout(() => {
-          // console.log(new Date,i)
-        }, 1000);
+      let a = {
+        b:1
       }
-      console.log(new Date,i)
+      function fun(){  
+          var a = b = 5;  
+      }  
+      console.log(a)
+      console.log(fun)
+      fun();  
+      console.log(typeof a);
+      console.log(typeof b);
     </script>
 </body>
 </html>
