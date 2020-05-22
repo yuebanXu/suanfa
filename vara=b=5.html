@@ -1,0 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-13 13:57:37
+ * @LastEditTime: 2020-05-22 16:21:59
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \algorithm\test.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      function fun(){  
+          var a = b = 5;  
+      }  
+      console.dir(fun)
+      fun()
+      // console.log(a)    //a is not defined
+      console.log(b)
+      //在这个立即执行的函数表达式中（IIFE）包含两个赋值操作，其中 a 使用 var 关键字进行声明，因此其属于函数内部的局部变量(仅存在于函数中)，相反，b 被分配到全局命名空间，可以看作 var a = 5; b = 5;
+      //另一个需要注意的时，这里没有在函数内部使用严格模式，如果启用了严格模式，代码会在输出 b 时报错 Uncaught ReferenceError: b is not defined ，需要记住的是，严格模式要求你显示的引用全局作用域
+    </script>
+</body>
+</html>
