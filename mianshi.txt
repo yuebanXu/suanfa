@@ -17,3 +17,13 @@ js基础 node http vueSourceCode suanfa
 5.谈谈hooks实现  
 6. redux中的设计模式是什么 
 7. 缓存服务器怎么做 浏览器端设置哪些属性 
+
+360一面：
+1. Vue3.0 都有什么改进。
+2. 有了Last-Modified，为什么还要有ETag
+3. immer.js原理
+4. async 的实现原理
+5. vue.$nextTick 原理
+6. nginx 配置，要不要给图片做gzip，用过nginx-lua写过什么
+7.对 Docker的理解
+8. 对CI/CD 的理解

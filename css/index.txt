@@ -1,0 +1,8 @@
+最近在学习 CSS， 看到一个属性 pointer-event，不知这家伙是干嘛用的，于是就查了相关资料，分享给你们。
+
+现代浏览器里CSS的职责范围和JavaScript的越来越模糊分不清。比如CSS里-webkit-touch-callout属性在iOS里能禁止当用户点击时弹出气泡框。而本文要说的pointer-events的风格更像JavaScript，它能够：
+
+* 阻止用户的点击动作产生任何效果
+* 阻止缺省鼠标指针的显示
+* 阻止 CSS 里的 hover 和 active 状态的变化触发事件
+* 阻止JavaScript点击动作触发的事件
