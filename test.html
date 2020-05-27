@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <script>
     function objectFactory() {
       var obj = new Object()
@@ -28,6 +29,33 @@
     };
     objectFactory(name,age)
   </script>
+=======
+    <script>
+<<<<<<< HEAD
+      // 第一版
+    Function.prototype.call2 = function(context) {
+        // 首先要获取调用call的函数，用this可以获取
+        console.log(this)
+        context.fn = this;
+        context.fn();
+        delete context.fn;
+    }
+
+    // 测试一下
+    var foo = {
+        value: 1
+    };
+
+    function bar() {
+        console.log(this.value);
+    }
+
+    bar.call2(foo); // 1
+=======
+      
+>>>>>>> dfc3e187b762cb06f5c372f5e7c101687eb52c8e
+    </script>
+>>>>>>> 8ea1f10552f46affecacdec4ddb98363d0f4900b
 </body>
 
 </html>
