@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-27 17:49:53
- * @LastEditTime: 2020-07-03 15:04:56
+ * @LastEditTime: 2020-07-07 17:42:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \algorithm\test.html
@@ -18,18 +18,10 @@
 
 <body>
   <script>
-    async function async1() {
-      console.log('async1 start');
-      await async2();
-      console.log('async1 end')
+    function parent2(age) {
+      this.age = age;
     }
-    async function async2() {
-      console.log('async2')
-    }
-
-    console.log('script start');
-    async1();
-    console.log('script end')
+    console.log(parent2(50))
   </script>
 </body>
 
