@@ -28,6 +28,24 @@ js基础 node http vueSourceCode suanfa
 7.对 Docker的理解
 8. 对CI/CD 的理解
 
+<<<<<<< HEAD
+腾讯一面：
+手写代码（数组对象去重，大数相加） 
+Vue 运行机制 
+v-if 和 v-show 区别 
+http2 和http1 区别， http2 有新哪些特性，http2 多路复用原理 
+有了解过CDN 吗， 怎么判断哪台 CDN 服务器距离客户端最近 
+React 和 Vue 区别 
+readu 实现异步action 
+突然有个活动，页面访问量很大，但是不改后端的前提下，前端该如何做 
+白屏原因 
+常用Linux 命令 
+webpack4 哪些新特性， treeshaking 原理 
+你经常用到的前端性能优化方法 
+怎么判断浏览器是否支持webp， webp优点 
+输入 URL 到页面渲染的整个流程 
+IE6 如何实现数据劫持？（San.js，它也是传统的MVVM数据双向绑定并且兼容IE6。还有VBScript，在VBScript中可以写类，类中可以定义getter和setter,同样可以实现数据的双向绑定）
+=======
 浏览器缓存策略
 跨域处理
 https 握手
@@ -70,3 +88,4 @@ let const
 箭头函数
 Set、Map、WeakSet 和 WeakMap
 之前提及的 Promsie，async，Class，Es6 module
+>>>>>>> a71f1addc1d92b142989381b33ad262e168e5375

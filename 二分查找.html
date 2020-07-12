@@ -1,0 +1,56 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-06-16 15:46:47
+ * @LastEditTime: 2020-06-16 15:55:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \algorithm\二分查找.html
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>二分查找</title>
+</head>
+<body>
+  <script>
+    //第一个相同的熟
+    function findMinSame(arr,value) {
+      let n = arr.length
+      let low = 0
+      let high = n - 1
+      while(low <= high) {
+        let mid = low + ((high - low) >> 1)
+        if(arr[mid]>=value) {
+          high = mid - 1
+        }else {
+          low = mid + 1
+        }
+      }
+      if(low<n&&arr[low]==value) return low
+      else return -1
+    }
+    //最后一个相同的数
+    function findMaxSame(arr,value) {
+      let n = arr.length
+      let low = 0
+      let high = n - 1
+      while(low <= high) {
+        let mid = low + ((high - low) >> 1)
+        if(arr[mid]<=value) {
+          low = mid + 1
+        }else {
+          high = mid - 1
+        }
+      }
+      if(high<n&&arr[high]==value) return high
+      else return -1
+    }
+    let arr = [1,6,7,9,9,10,13,19,22,22,666]
+    console.log(findMinSame(arr,9))
+    console.log(findMaxSame(arr,9))
+  </script>
+</body>
+</html>

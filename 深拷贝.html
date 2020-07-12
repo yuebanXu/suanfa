@@ -1,0 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-27 17:49:53
+ * @LastEditTime: 2020-07-07 14:36:24
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \algorithm\test.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>深拷贝</title>
+</head>
+
+<body>
+  <script>
+    function deepClone(source) {
+      if(typeof source !== 'object') return source
+      let target = {}
+      for (const key in source) {
+        if (source.hasOwnProperty(key)) {
+          if(typeof source[key] == 'object') {
+            target[key] = deepClone(source[key])
+          }else {
+            target[key] = source[key]
+          }
+        }
+      }
+      return target
+    }
+    console.dir(deepClone)
+  </script>
+</body>
+
+</html>
