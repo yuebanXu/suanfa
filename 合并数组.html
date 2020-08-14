@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [-4,-2,-1,1,2,3,4,6,8,9,10,11,14,15,18]
+        //打印出['1-4','6-7']
+        const merge = (arr)=> {
+            let i = 0
+            let j = i + 1
+            const res = []
+            while(j < arr.length) {
+                while(arr[j] - arr[i] == j - i) j++
+                res.push(
+                    j - 1 === i ? `${arr[i]}` : `${arr[i]}-${arr[j - 1]}`
+                )
+                i = j++
+            }
+            return res
+        }
+        let res = merge(arr)
+        console.log(res)
+    </script>
+</body>
+</html>

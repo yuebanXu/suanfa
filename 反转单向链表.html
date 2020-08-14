@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反转单向链表</title>
+</head>
+<body>
+    <script>
+        /**
+        * 206，141，21，19，876
+        * Definition for singly-linked list.
+        * function ListNode(val) {
+        *     this.val = val;
+        *     this.next = null;
+        * }
+        */
+        /**
+        * @param {ListNode} head
+        * @return {ListNode}
+        */
+        var reverseList = function(head) {
+            let reverse = (prev,curr) => {
+                if(!curr)return prev;
+                let next = curr.next;
+                curr.next = prev;
+                return reverse(curr,next);
+            }
+            return reverse(null,head);
+        };
+    </script>
+</body>
+</html>

@@ -60,7 +60,7 @@
 
       
 
-      //中序遍历  右->总->左
+      //中序遍历  首先遍历左子树，然后访问根节点，最后遍历右子树（左->根->右）
       function inOrder(node) {
         if(node) {
           inOrder(node.left)
@@ -68,7 +68,7 @@
           inOrder(node.right)
         }
       }
-      //先序遍历
+      //先序遍历  访问根节点->前序遍历左子树->前序遍历右子树
       function preOrder(node) {
         if(node) {
           preOrder(node.left)
@@ -76,7 +76,7 @@
           preOrder(node.right)
         }
       }
-      //后序遍历
+      //后序遍历 首先遍历左子树，然后遍历右子树，最后访问根节点（左->右->根）
       function postOrder(node) {
         if(node) {
           postOrder(node.right)
