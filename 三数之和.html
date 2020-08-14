@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三数之和</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1,2,2,2,3,3,3,3,4,5,6,7,8,9,10]
+        function threeSum(nums, target) {
+            let newNums = nums.sort((a,b)=> {
+                return a - b
+            })
+            let res = []
+            for (let i = 0; i < newNums.length - 2; i++) {
+                if(newNums[i] > target) {
+                    break
+                }
+                if(i > 0 && newNums[i] == newNums[i - 1]) {
+                    continue
+                } 
+                let left = i + 1, right = newNums.length - 1
+                while(left < right) {
+                    let sum = newNums[left] + newNums[right] + newNums[i]
+                    if(sum == target) {
+                        res.push([newNums[i],newNums[left],newNums[right]])
+                        console.log([newNums[i],newNums[left],newNums[right]])
+                        left++
+                        right--
+                    }else if(sum > target){
+                        right--
+                    }else {
+                        left++
+                    }
+                    while(left < right && newNums[left] == newNums[left-1]) left++
+                    while(left < right && newNums[right] == newNums[right+1]) right--
+                }
+            }
+            console.log(res)
+            return res
+        }
+        function threeSums(nums,target) {
+            let ans = [];
+            const len = nums.length;
+            if(nums == null || len < 3) return ans;
+            nums.sort((a, b) => a - b); // 排序
+            for (let i = 0; i < len ; i++) {
+                if(nums[i] > target) break; // 如果当前数字大于0，则三数之和一定大于0，所以结束循环
+                if(i > 0 && nums[i] == nums[i-1]) continue; // 去重
+                let L = i+1;
+                let R = len-1;
+                while(L < R){
+                    const sum = nums[i] + nums[L] + nums[R];
+                    if(sum == target){
+                        ans.push([nums[i],nums[L],nums[R]]);
+                        while (L<R && nums[L] == nums[L+1]) L++; // 去重
+                        while (L<R && nums[R] == nums[R-1]) R--; // 去重
+                        L++;
+                        R--;
+                    }
+                    else if (sum < target) L++;
+                    else if (sum > target) R--;
+                }
+            }        
+            console.log(ans)
+            return ans;
+        };
+        threeSum(nums,15)
+        threeSums(nums,15)
+    </script>
+</body>
+
+</html>

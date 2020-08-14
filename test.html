@@ -18,10 +18,107 @@
 
 <body>
   <script>
-    function parent2(age) {
-      this.age = age;
-    }
-    console.log(parent2(50))
+    (function () {
+
+      var taskList = [];
+
+      // 订阅
+      function subscribe() {
+        var param = {};
+        var args = Array.prototype.slice.call(arguments);
+
+        param.msg = args[0];
+        param.args = args.slice(1);
+
+        if (param.msg == "sleepFirst") {
+          taskList.unshift(param);
+        } else {
+          taskList.push(param);
+        }
+      }
+
+      // 发布
+      function publish() {
+        if (taskList.length > 0) {
+          run(taskList.shift());
+        }
+      }
+
+      // 运行
+      function run(param) {
+        var option = param.msg;
+        var args = param.args;
+
+        switch (option) {
+          case "lazyMan": lazyMan.apply(null, args); break;
+          case "eat": eat.apply(null, args); break;
+          case "sleep": sleep.apply(null, args); break;
+          case "sleepFirst": sleepFirst.apply(null, args); break;
+          default: ;
+        }
+      }
+
+      // 各种方法
+      function lazyMan(str) {
+        LazyManLog("Hi! This is " + str);
+        publish();
+      }
+
+      function eat(str) {
+        LazyManLog("Eat " + str + "~");
+        publish();
+      }
+
+      function sleep(time) {
+        setTimeout(function () {
+          LazyManLog("Wake up after " + str);
+          publish();
+        }, time);
+      }
+
+      function sleepFirst(time) {
+        setTimeout(function () {
+          LazyManLog("Wake up after " + str);
+          publish();
+        }, time);
+      }
+
+      // 输出
+      function LazyManLog(str) {
+        console.log(str);
+      }
+
+      // LazyMan类
+      function LazyMan() { }
+
+      LazyMan.prototype.eat = function (str) {
+        subscribe("eat", str);
+        return this;
+      }
+
+      LazyMan.prototype.sleep = function (time) {
+        subscribe("sleep", time);
+        return this;
+      }
+
+      LazyMan.prototype.sleepFirst = function (time) {
+        subscribe("sleepFirst", time);
+        return this;
+      }
+
+      window.LazyMan = function (name) {
+        subscribe('lazyMan', str);
+        setTimeout(function () {
+          publish();
+        }, 0);
+
+        return new LazyMan();
+      }
+
+
+    })();
+
+    LazyMan("Hank").sleep(10).eat("dinner");
   </script>
 </body>
 
